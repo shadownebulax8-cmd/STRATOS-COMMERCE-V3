@@ -52,6 +52,35 @@ stratos_commerce_core/
 └── workers/
 ```
 
+## 🗺️ System Architecture & Data Orchestration Flow
+
+                                 ┌───────────────────────────┐
+                                 │   Next.js Dashboard / UI  │
+                                 └─────────────┬─────────────┘
+                                               │
+                                               │ (JWT Auth / Multi-Tenant Subdomains)
+                                               ▼
+                                 ┌───────────────────────────┐
+                                 │    FastAPI Core Engine    │
+                                 └──────┬───────────────┬────┘
+                                        │               │
+                     (Tenant Middleware)│               │ (WebSocket / Events)
+                                        ▼               ▼
+           ┌──────────────────────────────┐   ┌──────────────────────────────┐
+           │ PostgreSQL Async Database    │   │ Redis Event Ingestion Layer  │
+           │  - Tenant-Aware Isolation    │   │  - Inventory State Streaming │
+           │  - Alembic Schema Evolution  │   │  - WebSocket Broadcasts      │
+           └──────────────────────────────┘   └──────────────┬───────────────┘
+                                                             │
+                                                             │ (Heavy Async Task Offloading)
+                                                             ▼
+                                              ┌──────────────────────────────┐
+                                              │ Celery Distribution Workers  │
+                                              │  - Split-Escrow Payouts      │
+                                              │  - Background Invoicing      │
+                                              └──────────────────────────────┘
+
+
 ## Requirements
 
 - Python 3.11+
