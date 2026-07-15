@@ -1,5 +1,10 @@
 # STRATOS-COMMERCE V3
 
+![CI](https://github.com/shadownebulax8-cmd/STRATOS-COMMERCE-V3/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-009688)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 STRATOS-COMMERCE V3 is a high-level, enterprise-style MVP for a distributed multi-tenant B2B commerce platform. It is designed as a strong foundation for marketplace, vendor, and wholesale commerce workflows with tenant-aware routing, JWT-based access control, split-checkout abstractions, inventory event streaming, and an API-first architecture.
 
 ## Why this project matters
@@ -21,6 +26,9 @@ This repository is aimed at founders, enterprise teams, and freelance developers
 - Redis-backed inventory stream placeholder
 - Alembic migration scaffold for PostgreSQL-style schema evolution
 - Health and startup metadata endpoints
+- CI workflow for automated testing
+- Docker-ready deployment scaffold
+- Simple Next.js dashboard scaffold
 
 ## Project structure
 
@@ -53,6 +61,8 @@ stratos_commerce_core/
 
 ## Installation
 
+### Backend
+
 1. Clone the repository:
 
 ```bash
@@ -78,6 +88,20 @@ pip install pytest
 
 ```bash
 uvicorn main:app --reload
+```
+
+### Frontend dashboard scaffold
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Docker
+
+```bash
+docker compose up --build
 ```
 
 ## Environment variables
