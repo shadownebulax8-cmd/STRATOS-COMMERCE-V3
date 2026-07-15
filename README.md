@@ -149,6 +149,18 @@ python -m pytest -q
 ### Admin
 - `GET /api/v1/admin/overview`
 
+### Analytics
+- `GET /api/v1/analytics/overview`
+
+### WebSocket
+- `WS /api/v1/ws/inventory`
+
+## Frontend pages
+
+- `/` — landing page
+- `/login` — merchant login screen
+- `/admin` — admin analytics dashboard
+
 ## Benefits
 
 - Modular and extensible architecture
